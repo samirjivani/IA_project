@@ -7,20 +7,20 @@ class MyFrame extends Frame
 	TextField t1,t2;
 	Button b1;
 	Label l1,l2;
-	JLabel l;
+	
 	
 	Font f1;
 	MyActionListener L1 = new MyActionListener(this);
 	MyFrame(String s)
-	{
+g	{
 		super(s);
 		this.setBounds(0,0,1000,800);
 		setLayout(null);
 		t1 = new TextField();
 		t2 = new TextField();
-		b1 = new Button("conform");
-		l1 = new Label("name");
-		l2 = new Label("mail id");
+		b1 = new Button("Confirm");
+		l1 = new Label("Name");
+		l2 = new Label("Mail ID");
 		
 		l1.setBounds(420,250,70,30);
 		t1.setBounds(525,250,300,30);
@@ -30,9 +30,8 @@ class MyFrame extends Frame
 		
 		b1.setBounds(500,400,200,40);
 		
-		l= new JLabel(new ImageIcon("C:\Users\Admin\Downloads\image.jpg"));
-		Font f1 = new Font("Arial",Font.BOLD,20);
 		
+		Font f1 = new Font("Arial",Font.BOLD,20);
 		t1.setFont(f1);
 		t2.setFont(f1);
 		l1.setFont(f1);
@@ -44,7 +43,7 @@ class MyFrame extends Frame
 		add(t2);
 		add(l2);
 		add(b1);
-		add(l);
+		
 		
 		b1.addActionListener(L1);
 		
