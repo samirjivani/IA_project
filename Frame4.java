@@ -162,7 +162,8 @@ class Frame4 extends Frame
 		
 		add(lm);
 		add(ln);
-		
+		setBackground(Color.GRAY);
+		setForeground(Color.BLACK);
 		 b1.addActionListener(L1);
 		 b2.addActionListener(L1);
 		 b3.addActionListener(L1);
