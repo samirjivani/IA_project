@@ -1,16 +1,16 @@
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.AWTEvent.*;
+
 import java.util.regex.*;
 import java.io.*;
 import javax.swing.*;
 import java.lang.*;
 class MyActionListener implements ActionListener
 {
-	String temp,temp2;
-	Boolean f1,f2,f3,f4,f5,f6;
-	Frame1 fm1;
+	String temp,temp3,CP,CQ,CR,CS;
+	Boolean f1, f2, f3;
 	MyFrame fm;
+	Frame1 fm1;
 	Frame2 fm2;
 	Frame3 fm3;
 	Frame4 fm4;
@@ -41,685 +41,399 @@ class MyActionListener implements ActionListener
 		{
 			
 			fm1 = new Frame1();
+			
 			this.fm1.setVisible(true);
 		}
 		if(e.getActionCommand().equals("2 variable k map"))
 		{
 			fm2 = new Frame2();
 			this.fm2.setVisible(true);
-			
-			
-			
-			
+			fm1.setVisible(false);
 		}
 		if(e.getActionCommand().equals("3 variable k map"))
 		{
 			fm3 = new Frame3();
 			this.fm3.setVisible(true);
-				
+			fm2.setVisible(false);
+					
 		}
 		if(e.getActionCommand().equals("4 variable k map"))
 		{
 			fm4 = new Frame4();
 			
 			this.fm4.setVisible(true);
-			
-			
-		}
-		if(e.getActionCommand().equals("Back"))
+			}
+		if(e.getActionCommand().equals("<-Back"))
+			{
+				fm1 = new Frame1();
+				this.fm1.setVisible(true);
+				fm3.setVisible(false);
+			}
+			if(e.getActionCommand().equals("<--Back"))
+			{
+				fm1 = new Frame1();
+				this.fm1.setVisible(true);
+				fm4.setVisible(false);
+			}		
+		if(e.getSource() == this.fm2.b12)
 		{
 			fm1 = new Frame1();
 			this.fm1.setVisible(true);
-			
-			
+			fm2.setVisible(false);
 		}
-		
-//fm2 button logic
-	
-		
-		if(fm4.isVisible())
+		if(fm3.isVisible())
 		{
-			if(e.getSource()== this.fm4.b1)
+			if(e.getSource()==this.fm3.V)
+				{
+					
+				
+					temp = this.fm3.V.getLabel();
+				
+					if(temp== "")
+					{
+						f1 = true;
+						f2 = false;
+						f3 = false;
+					
+					}
+					else if(temp== "1")
+					{
+						f2 = true;
+						f3 = false;
+						f1 = false;
+					
+					}
+					else if(temp== "0")
+					{
+						f3 = true;
+						f2 = false;
+						f1 = false;
+					
+					}
+					if(f1)
+					{
+						this.fm3.V.setLabel("1");
+					}
+					else if(f2)
+					{
+						this.fm3.V.setLabel("0");
+					}
+					else if(f3)
+					{
+						this.fm3.V.setLabel("");
+					}
+				}
+				
+		}
+
+		if(e.getActionCommand().equals("enter"))
+		{
+			if(fm2.isVisible())
 			{
+				CP = this.fm2.P.getLabel();
+				CQ = this.fm2.Q.getLabel();
+				CR = this.fm2.R.getLabel();
+				CS = this.fm2.S.getLabel();
+				if(CP == "1" && CQ == "1" && CR == "1" && CS == "1")
+				{
+					this.fm2.t2.setText("1");
+				}
+				else if(CP == "0" && CQ == "0" && CR == "0" && CS == "0")
+				{
+					this.fm2.t1.setText("0");
+				}
+				else if(CQ == "1" && CR == "1" && CS == "1")
+				{
+					this.fm2.t2.setText("A+B");
+				}
+				else if(CP == "1" && CR == "1" && CS == "1")
+				{
+					this.fm2.t2.setText("A+B'");
+				}
+				else if(CP == "1" &&  CQ == "1" && CS == "1")
+				{
+					this.fm2.t2.setText("A'+B");
+				}
+				else if(CP == "1" && CQ == "1" && CR == "1"  )
+				{
+					this.fm2.t2.setText("A'+B'");
+				}
+				else if(CP == "1" && CQ == "1" )
+				{
+					this.fm2.t2.setText("A'");
+				}
+				else if(CP == "1" && CR == "1" )
+				{
+					this.fm2.t2.setText("B'");
+				}
+				else if(CP == "1" && CS == "1" )
+				{
+					this.fm2.t2.setText("A'B'+AB");
+				}
+				else if(CQ == "1" && CR == "1" )
+				{
+					this.fm2.t2.setText("A'B+AB'");
+				}
+				else if(CQ == "1" && CS == "1")
+				{
+					this.fm2.t2.setText("B");
+				}
+				else if(CR == "1" && CS == "1" )
+				{
+					this.fm2.t2.setText("A");
+				}
 				
-				temp = this.fm4.b1.getLabel();
+				else if(CP == "1" )
+				{
+					this.fm2.t2.setText("A'B'");
+				}
+				else if(CR == "1" )
+				{
+					this.fm2.t2.setText("AB'");
+
+					
+				}
+				else if(CQ == "1" )
+				{
+					this.fm2.t2.setText("A'B");
+					
+				}
+				else if(CS == "1" )
+				{
+					this.fm2.t2.setText("AB");
+					
+				}
+				else if(CQ == "0" && CR == "0" && CS == "0")
+				{
+					this.fm2.t1.setText("(A')(B')");
+				}
+				else if(CP == "0" && CR == "0" && CS == "0")
+				{
+					this.fm2.t1.setText("(A')(B)");
+				}
+				else if(CP == "0" &&  CQ == "0" && CS == "0")
+				{
+					this.fm2.t1.setText("(A)(B')");
+				}
+				else if(CP == "0" && CQ == "0" && CR == "0"  )
+				{
+					this.fm2.t1.setText("(A)(B)");
+				}
+				else if(CP == "0" && CQ == "0" )
+				{
+					this.fm2.t1.setText("A");
+				}
+				else if(CP == "0" && CR == "0" )
+				{
+					this.fm2.t1.setText("B");
+				}
+				else if(CP == "0" && CS == "0" )
+				{
+					this.fm2.t1.setText("(A+B)(A'+B')");
+				}
+				else if(CQ == "0" && CR == "0" )
+				{
+					this.fm2.t1.setText("(A+B')(A'+B)");
+				}
+				else if(CQ == "0" && CS == "0")
+				{
+					this.fm2.t1.setText("B'");
+				}
+				else if(CR == "0" && CS == "0" )
+				{
+					this.fm2.t1.setText("A'");
+				}
 				
-				if(temp== "")
+				else if(CP == "0" )
 				{
-					f1 = true;
-					f2 = false;
-					f3 = false;
+					this.fm2.t1.setText("A+B");
+				}
+				else if(CR == "0" )
+				{
+
+					this.fm2.t1.setText("A'+B");
 					
 				}
-				else if(temp== "1")
+				else if(CQ == "0" )
 				{
-					f2 = true;
-					f3 = false;
-					f1 = false;
+					this.fm2.t1.setText("A+B'");
 					
 				}
-				 else if(temp== "0")
+				else if(CS == "0" )
 				{
-					f3 = true;
-					f2 = false;
-					f1 = false;
+					this.fm2.t1.setText("A'+B'");
 					
-				}
-				if(f1)
-				{
-					this.fm4.b1.setLabel("1");
-				}
-				else if(f2)
-				{
-					this.fm4.b1.setLabel("0");
-				}
-				else if(f3)
-				{
-					this.fm4.b1.setLabel("");
-				}
-			}
-				if(e.getSource()== this.fm4.b2)
-			{
-				
-				temp = this.fm4.b2.getLabel();
-				
-				if(temp== "")
-				{
-					f1 = true;
-					f2 = false;
-					f3 = false;
-					
-				}
-				else if(temp== "1")
-				{
-					f2 = true;
-					f3 = false;
-					f1 = false;
-					
-				}
-				 else if(temp== "0")
-				{
-					f3 = true;
-					f2 = false;
-					f1 = false;
-					
-				}
-				if(f1)
-				{
-					this.fm4.b2.setLabel("1");
-				}
-				else if(f2)
-				{
-					this.fm4.b2.setLabel("0");
-				}
-				else if(f3)
-				{
-					this.fm4.b2.setLabel("");
-				}
-			}
-	
-	
-				if(e.getSource()== this.fm4.b3)
-			{
-				
-				temp = this.fm4.b3.getLabel();
-				
-				if(temp== "")
-				{
-					f1 = true;
-					f2 = false;
-					f3 = false;
-					
-				}
-				else if(temp== "1")
-				{
-					f2 = true;
-					f3 = false;
-					f1 = false;
-					
-				}
-				 else if(temp== "0")
-				{
-					f3 = true;
-					f2 = false;
-					f1 = false;
-					
-				}
-				if(f1)
-				{
-					this.fm4.b3.setLabel("1");
-				}
-				else if(f2)
-				{
-					this.fm4.b3.setLabel("0");
-				}
-				else if(f3)
-				{
-					this.fm4.b3.setLabel("");
-				}
-			}
-				if(e.getSource()== this.fm4.b6)
-			{
-				
-				temp = this.fm4.b4.getLabel();
-				
-				if(temp== "")
-				{
-					f1 = true;
-					f2 = false;
-					f3 = false;
-					
-				}
-				else if(temp== "1")
-				{
-					f2 = true;
-					f3 = false;
-					f1 = false;
-					
-				}
-				 else if(temp== "0")
-				{
-					f3 = true;
-					f2 = false;
-					f1 = false;
-					
-				}
-				if(f1)
-				{
-					this.fm4.b4.setLabel("1");
-				}
-				else if(f2)
-				{
-					this.fm4.b4.setLabel("0");
-				}
-				else if(f3)
-				{
-					this.fm4.b4.setLabel("");
-				}
-			}
-				if(e.getSource()== this.fm4.b5)
-			{
-				
-				temp = this.fm4.b5.getLabel();
-				
-				if(temp== "")
-				{
-					f1 = true;
-					f2 = false;
-					f3 = false;
-					
-				}
-				else if(temp== "1")
-				{
-					f2 = true;
-					f3 = false;
-					f1 = false;
-					
-				}
-				 else if(temp== "0")
-				{
-					f3 = true;
-					f2 = false;
-					f1 = false;
-					
-				}
-				if(f1)
-				{
-					this.fm4.b5.setLabel("1");
-				}
-				else if(f2)
-				{
-					this.fm4.b5.setLabel("0");
-				}
-				else if(f3)
-				{
-					this.fm4.b5.setLabel("");
-				}
-			}
-				if(e.getSource()== this.fm4.b6)
-			{
-				
-				temp = this.fm4.b6.getLabel();
-				
-				if(temp== "")
-				{
-					f1 = true;
-					f2 = false;
-					f3 = false;
-					
-				}
-				else if(temp== "1")
-				{
-					f2 = true;
-					f3 = false;
-					f1 = false;
-					
-				}
-				 else if(temp== "0")
-				{
-					f3 = true;
-					f2 = false;
-					f1 = false;
-					
-				}
-				if(f1)
-				{
-					this.fm4.b6.setLabel("1");
-				}
-				else if(f2)
-				{
-					this.fm4.b6.setLabel("0");
-				}
-				else if(f3)
-				{
-					this.fm4.b6.setLabel("");
-				}
-			}
-				if(e.getSource()== this.fm4.b7)
-			{
-				
-				temp = this.fm4.b7.getLabel();
-				
-				if(temp== "")
-				{
-					f1 = true;
-					f2 = false;
-					f3 = false;
-					
-				}
-				else if(temp== "1")
-				{
-					f2 = true;
-					f3 = false;
-					f1 = false;
-					
-				}
-				 else if(temp== "0")
-				{
-					f3 = true;
-					f2 = false;
-					f1 = false;
-					
-				}
-				if(f1)
-				{
-					this.fm4.b7.setLabel("1");
-				}
-				else if(f2)
-				{
-					this.fm4.b7.setLabel("0");
-				}
-				else if(f3)
-				{
-					this.fm4.b7.setLabel("");
-				}
-			}
-				if(e.getSource()== this.fm4.b8)
-			{
-				
-				temp = this.fm4.b8.getLabel();
-				
-				if(temp== "")
-				{
-					f1 = true;
-					f2 = false;
-					f3 = false;
-					
-				}
-				else if(temp== "1")
-				{
-					f2 = true;
-					f3 = false;
-					f1 = false;
-					
-				}
-				 else if(temp== "0")
-				{
-					f3 = true;
-					f2 = false;
-					f1 = false;
-					
-				}
-				if(f1)
-				{
-					this.fm4.b8.setLabel("1");
-				}
-				else if(f2)
-				{
-					this.fm4.b8.setLabel("0");
-				}
-				else if(f3)
-				{
-					this.fm4.b8.setLabel("");
-				}
-			}
-				if(e.getSource()== this.fm4.b9)
-			{
-				
-				temp = this.fm4.b9.getLabel();
-				
-				if(temp== "")
-				{
-					f1 = true;
-					f2 = false;
-					f3 = false;
-					
-				}
-				else if(temp== "1")
-				{
-					f2 = true;
-					f3 = false;
-					f1 = false;
-					
-				}
-				 else if(temp== "0")
-				{
-					f3 = true;
-					f2 = false;
-					f1 = false;
-					
-				}
-				if(f1)
-				{
-					this.fm4.b9.setLabel("1");
-				}
-				else if(f2)
-				{
-					this.fm4.b9.setLabel("0");
-				}
-				else if(f3)
-				{
-					this.fm4.b9.setLabel("");
-				}
-			}
-		if(e.getSource()== this.fm4.b13)
-			{
-				
-				temp = this.fm4.b13.getLabel();
-				
-				if(temp== "")
-				{
-					f1 = true;
-					f2 = false;
-					f3 = false;
-					
-				}
-				else if(temp== "1")
-				{
-					f2 = true;
-					f3 = false;
-					f1 = false;
-					
-				}
-				 else if(temp== "0")
-				{
-					f3 = true;
-					f2 = false;
-					f1 = false;
-					
-				}
-				if(f1)
-				{
-					this.fm4.b13.setLabel("1");
-				}
-				else if(f2)
-				{
-					this.fm4.b13.setLabel("0");
-				}
-				else if(f3)
-				{
-					this.fm4.b13.setLabel("");
-				}
-			}
-				if(e.getSource()== this.fm4.b14)
-			{
-				
-				temp = this.fm4.b14.getLabel();
-				
-				if(temp== "")
-				{
-					f1 = true;
-					f2 = false;
-					f3 = false;
-					
-				}
-				else if(temp== "1")
-				{
-					f2 = true;
-					f3 = false;
-					f1 = false;
-					
-				}
-				 else if(temp== "0")
-				{
-					f3 = true;
-					f2 = false;
-					f1 = false;
-					
-				}
-				if(f1)
-				{
-					this.fm4.b14.setLabel("1");
-				}
-				else if(f2)
-				{
-					this.fm4.b14.setLabel("0");
-				}
-				else if(f3)
-				{
-					this.fm4.b14.setLabel("");
-				}
-			}
-		if(e.getSource()== this.fm4.b15)
-			{
-				
-				temp = this.fm4.b15.getLabel();
-				
-				if(temp== "")
-				{
-					f1 = true;
-					f2 = false;
-					f3 = false;
-					
-				}
-				else if(temp== "1")
-				{
-					f2 = true;
-					f3 = false;
-					f1 = false;
-					
-				}
-				 else if(temp== "0")
-				{
-					f3 = true;
-					f2 = false;
-					f1 = false;
-					
-				}
-				if(f1)
-				{
-					this.fm4.b15.setLabel("1");
-				}
-				else if(f2)
-				{
-					this.fm4.b15.setLabel("0");
-				}
-				else if(f3)
-				{
-					this.fm4.b15.setLabel("");
-				}
-			}	if(e.getSource()== this.fm4.b16)
-			{
-				
-				temp = this.fm4.b16.getLabel();
-				
-				if(temp== "")
-				{
-					f1 = true;
-					f2 = false;
-					f3 = false;
-					
-				}
-				else if(temp== "1")
-				{
-					f2 = true;
-					f3 = false;
-					f1 = false;
-					
-				}
-				 else if(temp== "0")
-				{
-					f3 = true;
-					f2 = false;
-					f1 = false;
-					
-				}
-				if(f1)
-				{
-					this.fm4.b16.setLabel("1");
-				}
-				else if(f2)
-				{
-					this.fm4.b16.setLabel("0");
-				}
-				else if(f3)
-				{
-					this.fm4.b16.setLabel("");
-				}
-			}
-		if(e.getSource()== this.fm4.b17)
-			{
-				
-				temp = this.fm4.b17.getLabel();
-				
-				if(temp== "")
-				{
-					f1 = true;
-					f2 = false;
-					f3 = false;
-					
-				}
-				else if(temp== "1")
-				{
-					f2 = true;
-					f3 = false;
-					f1 = false;
-					
-				}
-				 else if(temp== "0")
-				{
-					f3 = true;
-					f2 = false;
-					f1 = false;
-					
-				}
-				if(f1)
-				{
-					this.fm4.b17.setLabel("1");
-				}
-				else if(f2)
-				{
-					this.fm4.b17.setLabel("0");
-				}
-				else if(f3)
-				{
-					this.fm4.b17.setLabel("");
-				}
-			}
-				if(e.getSource()== this.fm4.b18)
-			{
-				
-				temp = this.fm4.b18.getLabel();
-				
-				if(temp== "")
-				{
-					f1 = true;
-					f2 = false;
-					f3 = false;
-					
-				}
-				else if(temp== "1")
-				{
-					f2 = true;
-					f3 = false;
-					f1 = false;
-					
-				}
-				 else if(temp== "0")
-				{
-					f3 = true;
-					f2 = false;
-					f1 = false;
-					
-				}
-				if(f1)
-				{
-					this.fm4.b18.setLabel("1");
-				}
-				else if(f2)
-				{
-					this.fm4.b18.setLabel("0");
-				}
-				else if(f3)
-				{
-					this.fm4.b18.setLabel("");
-				}
-			}
-		if(e.getSource()== this.fm4.b19)
-			{
-				
-				temp = this.fm4.b19.getLabel();
-				
-				if(temp== "")
-				{
-					f1 = true;
-					f2 = false;
-					f3 = false;
-					
-				}
-				else if(temp== "1")
-				{
-					f2 = true;
-					f3 = false;
-					f1 = false;
-					
-				}
-				 else if(temp== "0")
-				{
-					f3 = true;
-					f2 = false;
-					f1 = false;
-					
-				}
-				if(f1)
-				{
-					this.fm4.b19.setLabel("1");
-				}
-				else if(f2)
-				{
-					this.fm4.b19.setLabel("0");
-				}
-				else if(f3)
-				{
-					this.fm4.b19.setLabel("");
 				}
 			}
 		}
 		
-		
+		if(fm2.isVisible())
+		{
+				if(e.getSource()== this.fm2.P)
+			{
+				
+				temp = this.fm2.P.getLabel();
+				
+				if(temp== "")
+				{
+					f1 = true;
+					f2 = false;
+					f3 = false;
+					
+				}
+				else if(temp== "1")
+				{
+					f2 = true;
+					f3 = false;
+					f1 = false;
+					
+				}
+				 else if(temp== "0")
+				{
+					f3 = true;
+					f2 = false;
+					f1 = false;
+					
+				}
+				if(f1)
+				{
+					this.fm2.P.setLabel("1");
+				}
+				else if(f2)
+				{
+					this.fm2.P.setLabel("0");
+				}
+				else if(f3)
+				{
+					this.fm2.P.setLabel("");
+				}
+			}
+			if(e.getSource()== this.fm2.Q)
+			{
+				
+				temp = this.fm2.Q.getLabel();
+				
+				if(temp== "")
+				{
+					f1 = true;
+					f2 = false;
+					f3 = false;
+					
+				}
+				else if(temp== "1")
+				{
+					f2 = true;
+					f3 = false;
+					f1 = false;
+					
+				}
+				 else if(temp== "0")
+				{
+					f3 = true;
+					f2 = false;
+					f1 = false;
+					
+				}
+				if(f1)
+				{
+					this.fm2.Q.setLabel("1");
+				}
+				else if(f2)
+				{
+					this.fm2.Q.setLabel("0");
+				}
+				else if(f3)
+				{
+					this.fm2.Q.setLabel("");
+				}
+			}
+			if(e.getSource()== this.fm2.R)
+			{
+				
+				temp = this.fm2.R.getLabel();
+				
+				if(temp== "")
+				{
+					f1 = true;
+					f2 = false;
+					f3 = false;
+					
+				}
+				else if(temp== "1")
+				{
+					f2 = true;
+					f3 = false;
+					f1 = false;
+					
+				}
+				 else if(temp== "0")
+				{
+					f3 = true;
+					f2 = false;
+					f1 = false;
+					
+				}
+				if(f1)
+				{
+					this.fm2.R.setLabel("1");
+				}
+				else if(f2)
+				{
+					this.fm2.R.setLabel("0");
+				}
+				else if(f3)
+				{
+					this.fm2.R.setLabel("");
+				}
+			}
+			if(e.getSource()== this.fm2.S)
+			{
+				
+				temp = this.fm2.S.getLabel();
+				
+				if(temp== "")
+				{
+					f1 = true;
+					f2 = false;
+					f3 = false;
+					
+				}
+				else if(temp== "1")
+				{
+					f2 = true;
+					f3 = false;
+					f1 = false;
+					
+				}
+				 else if(temp== "0")
+				{
+					f3 = true;
+					f2 = false;
+					f1 = false;
+					
+				}
+				if(f1)
+				{
+					this.fm2.S.setLabel("1");
+				}
+				else if(f2)
+				{
+					this.fm2.S.setLabel("0");
+				}
+				else if(f3)
+				{
+					this.fm2.S.setLabel("");
+				}
+			}
+				
 		}
-		
-	
 			
-	
+		
+		
+		
+		
+		
 	}
-
-		
-
-		
-
-			}
-			
-	
-	
 }
+	
+	
