@@ -12,7 +12,7 @@ class MyFrame extends Frame
 	Font f1;
 	MyActionListener L1 = new MyActionListener(this);
 	MyFrame(String s)
-g	{
+	{
 		super(s);
 		this.setBounds(0,0,1000,800);
 		setLayout(null);
@@ -43,7 +43,8 @@ g	{
 		add(t2);
 		add(l2);
 		add(b1);
-		
+		setBackground(Color.GRAY);
+		setForeground(Color.BLACK);
 		
 		b1.addActionListener(L1);
 		
@@ -56,17 +57,18 @@ g	{
 			
 		});
 	}
+	
 		public static void main(String args[])
 		{
 			MyFrame mf = new MyFrame("IA project");
 			mf.setVisible(true);
 			
 		}
-		
-		
-		
-		
-		
-		
 	
+	
+	
+	
+	
+	
+
 }
