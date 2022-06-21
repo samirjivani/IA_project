@@ -146,15 +146,7 @@ class Frame2 extends Frame
 				P.setLabel("");	
 			}
 		}
-	});*/
-		
-		
-		
-		
-		
-		
-		
-	
+	});*/	
 }
 
 
