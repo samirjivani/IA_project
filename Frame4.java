@@ -17,7 +17,7 @@ class Frame4 extends Frame
 			t2 = new TextField();
 		b10 = new Button("Enter");
 		b11 = new Button("Clear");
-		b12 = new Button("Back");
+		b12 = new Button("<--Back");
 		
 		 lm = new Label("Max");
 		 ln = new Label("Min");
